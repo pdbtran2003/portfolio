@@ -9,8 +9,7 @@ const display = Manrope({ subsets: ['latin', 'vietnamese'], variable: '--font-di
 const body = Inter({ subsets: ['latin', 'vietnamese'], variable: '--font-body', display: 'swap' });
 const mono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono', display: 'swap' });
 
-// Mirrors basePath in next.config.ts: metadata URLs are not prefixed automatically.
-const base = process.env.GITHUB_ACTIONS === 'true' ? '/portfolio' : '';
+import { base } from './ui/base';
 
 const description =
   'Data & Engineering portfolio of Phan Dang Bao Tran: data integration, database development and analytics, grounded in how businesses operate.';

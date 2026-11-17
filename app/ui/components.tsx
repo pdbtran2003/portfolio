@@ -3,8 +3,7 @@ import type { ReactNode } from 'react';
 import { contact, profile, type Project } from '../content';
 import { navItems } from './nav';
 
-// Mirrors basePath in next.config.ts for raw URLs that <Link> does not handle.
-const base = process.env.GITHUB_ACTIONS === 'true' ? '/portfolio' : '';
+import { base, withBase } from './base';
 
 /** Keeps old routes working in a static export: meta refresh (no JS needed) plus a visible link. */
 export function MovedNotice({ to, label }: { to: string; label: string }) {
@@ -125,6 +124,7 @@ export function SiteFooter() {
             {contact.github && <li><a href={contact.github} target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a></li>}
             {contact.linkedin && <li><a href={contact.linkedin} target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a></li>}
             {contact.email && <li><a href={`mailto:${contact.email}`}>Email</a></li>}
+            {contact.cv && <li><a href={withBase(contact.cv)} download>CV (PDF)</a></li>}
           </ul>
         </div>
       </div>

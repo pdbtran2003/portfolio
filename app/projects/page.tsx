@@ -13,7 +13,7 @@ export default function ProjectsPage() {
       <PageHeader
         eyebrow="Projects"
         title="Case studies with a clear line around my part."
-        intro="Client data integration at Yspace, and backend work on two team products. Each case study states what I built, what teammates built, and what is merged versus still in review."
+        intro="Client data integration at Yspace, and backend work on two team products. Each case study states what I built and what teammates built."
       />
       <section className="section section-tight container" aria-label="Project list">
         <div className="project-list">
