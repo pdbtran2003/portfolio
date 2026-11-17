@@ -1,51 +1,71 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { CTA, PageHero, PageShell, ProcessDiagram, SectionHeading, TagList } from '../components';
+import { approach } from '../content';
+import { ContactCTA, PageHeader, SectionHead } from '../ui/components';
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'About Phan Dang Bao Tran and an approach spanning business operations, systems, data and automation.',
+  description: 'About Phan Dang Bao Tran: a data and engineering practitioner who starts from how a business operates.',
 };
+
+const interests = [
+  { title: 'Data engineering', copy: 'Incremental pipelines, idempotent syncs and jobs that are safe to run twice.' },
+  { title: 'Database systems', copy: 'Constraints, migrations and concurrency control that keep data correct under load.' },
+  { title: 'Integration', copy: 'Moving data between platforms with clear contracts and honest error handling.' },
+  { title: 'Analytics', copy: 'KPI definitions the business agrees with, and reporting people actually use.' },
+];
 
 export default function AboutPage() {
   return (
-    <PageShell>
-      <PageHero
-        eyebrow="About / Profile"
-        title="Shaping clarity from operational complexity."
-        intro="I work at the intersection of business operations, systems and data."
+    <>
+      <PageHeader
+        eyebrow="About"
+        title="I start from how the business works, then build the data around it."
+        intro="I work across data integration, database development and analytics. Most of my work begins with an operational question, not a technology choice."
       />
 
-      <section className="about-intro shell grid-12">
-        <div className="about-statement">
-          <p className="eyebrow">What I do</p>
-          <h2>I turn business processes into structured systems, integrated data, automation and actionable business insights.</h2>
-        </div>
-        <div className="prose-stack">
-          <p>My projects typically start with an operational problem rather than a technology choice: fragmented spreadsheets, manual approvals, disconnected data sources, repetitive work or limited visibility for management.</p>
-          <p>I analyse the current process, identify business rules and dependencies, design a practical to-be process, model the data, implement the operational system, automate repetitive steps and connect the resulting data to analytics and reporting.</p>
+      <section className="section section-tight container about-grid" aria-labelledby="background-title">
+        <div className="about-label" data-reveal><p className="eyebrow">Background</p></div>
+        <div className="prose prose-large" data-reveal>
+          <h2 id="background-title" className="visually-hidden">Background</h2>
+          <p>At Yspace I worked with enterprise clients on two parallel tracks: connecting e-commerce and operational data into BigQuery and Lark Base for reporting, and turning client processes into business modules on Lark.</p>
+          <p>Alongside that, I build backend features for two team products—attendance and payroll on PostgreSQL and TypeScript, and billing and job scheduling on Python and PostgreSQL. That work taught me to put rules in the database, make jobs safe to re-run and state clearly what is finished and what is still in review.</p>
+          <p>Earlier, as a teaching assistant at ILA English Center and an audit intern at AVN Audit, I tracked class performance across 6+ classes and reviewed 500+ transaction records for discrepancies. Different settings, same habit: careful records and clear reporting.</p>
         </div>
       </section>
 
-      <section className="about-process shell">
-        <SectionHeading index="01" title="How I work" note="A cross-layer approach grounded in the operation itself." />
-        <ProcessDiagram label="From operational problem to useful insight" steps={['Business problem', 'Process analysis', 'System design', 'Data model', 'Implementation', 'Automation', 'Data integration', 'Analytics']} />
-      </section>
-
-      <section className="about-strengths shell">
-        <SectionHeading index="02" title="What I am best at" />
-        <TagList items={['Translating requirements into workflows', 'Connecting process and data structures', 'Practical operational data models', 'Workflow automation', 'Multi-source data integration', 'Dashboards and management views']} />
-      </section>
-
-      <section className="career-direction shell grid-12">
-        <p className="eyebrow">Career direction</p>
-        <div>
-          <h2>Roles where business analysis, systems thinking and data intersect.</h2>
-          <p>Business Analyst · Data Analyst · System Analyst · Solution Consultant · Digital Transformation / Business Application</p>
-          <Link className="text-link" href="/experience">View experience <span aria-hidden="true">→</span></Link>
+      <section className="section section-tint" aria-labelledby="approach-title">
+        <div className="container">
+          <SectionHead index="01" label="Working approach" id="approach-title" title="Four movements, in order." />
+          <ol className="approach">
+            {approach.map((step) => (
+              <li key={step.index} data-reveal>
+                <span className="mono">{step.index}</span>
+                <h3>{step.title}</h3>
+                <p>{step.copy}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
-      <CTA />
-    </PageShell>
+
+      <section className="section container" aria-labelledby="interests-title">
+        <SectionHead index="02" label="Areas of interest" id="interests-title" title="Where I want to go deeper." />
+        <dl className="interests">
+          {interests.map((item) => (
+            <div key={item.title} data-reveal>
+              <dt>{item.title}</dt>
+              <dd>{item.copy}</dd>
+            </div>
+          ))}
+        </dl>
+        <div className="about-links" data-reveal>
+          <Link href="/experience" className="text-link">Experience <span className="arrow" aria-hidden="true">→</span></Link>
+          <Link href="/projects" className="text-link">Projects <span className="arrow" aria-hidden="true">→</span></Link>
+        </div>
+      </section>
+
+      <ContactCTA />
+    </>
   );
 }

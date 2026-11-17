@@ -1,115 +1,107 @@
 import Link from 'next/link';
-import { CTA, PageShell, ProjectCard, SectionHeading, SiteMark } from './components';
-import { capabilityAreas, howIWork, metrics, projects } from './content';
-import { HeroHeadline, Odometer, Reveal, StackedCards, WordReveal } from './motion';
+import { capabilities, contact, experience, homeMetrics, metricsSource, profile, projects, stack } from './content';
+import { ContactCTA, ProjectPreview, SectionHead } from './ui/components';
 
-export default function Home() {
+const whereLabel = { work: 'Work', projects: 'Projects', both: 'Work · Projects' } as const;
+
+export default function HomePage() {
   return (
-    <PageShell>
-      <section className="hero shell">
-        <p className="eyebrow">Business &times; Data &times; Systems</p>
-        <div className="hero-lockup">
-          <HeroHeadline
-            lines={[
-              { text: 'From business processes', dim: true },
-              { text: 'to working systems.' },
-            ]}
-          />
-          <Reveal as="div" className="hero-aside" delay={0.45}>
-            <p>
-              Business &amp; Data professional working across data integration, business systems,
-              backend development, and automation.
-            </p>
-            <div className="button-row">
-              <Link className="button button-primary" href="/work">View selected work <span aria-hidden="true">&rarr;</span></Link>
-              <Link className="button button-outline" href="/about">About me</Link>
-            </div>
-          </Reveal>
+    <>
+      <section className="hero container" aria-labelledby="hero-title">
+        <div className="hero-copy">
+          <p className="eyebrow" data-reveal>{profile.role} · {profile.name}</p>
+          <h1 id="hero-title" className="hero-title" data-reveal style={{ '--d': 1 } as React.CSSProperties}>{profile.headline}</h1>
+          <p className="lede" data-reveal style={{ '--d': 2 } as React.CSSProperties}>{profile.intro}</p>
+          <div className="hero-actions" data-reveal style={{ '--d': 3 } as React.CSSProperties}>
+            <Link href="/projects" className="btn">Explore projects <span className="arrow" aria-hidden="true">→</span></Link>
+            {contact.cv && <a href={contact.cv} className="btn btn-ghost" download>Download CV</a>}
+            <Link href="/contact" className="text-link">Get in touch</Link>
+          </div>
         </div>
+
+        <aside className="hero-index" aria-label="At a glance" data-reveal style={{ '--d': 2 } as React.CSSProperties}>
+          <p className="eyebrow">At a glance</p>
+          <dl>
+            <div><dt>Focus</dt><dd>Data integration<br />Database development<br />Analytics</dd></div>
+            <div><dt>Latest role</dt><dd>Yspace — Data Integration &amp; Business Systems<span className="mono dim">Oct 2025 — Aug 2026</span></dd></div>
+            <div><dt>Team projects</dt><dd>Vec Att · Vecinn<span className="mono dim">PostgreSQL · Python · TypeScript</span></dd></div>
+          </dl>
+        </aside>
       </section>
 
-      <section className="intro-band" aria-labelledby="intro-statement">
-        <div className="intro-band-inner shell">
-          <SiteMark className="site-mark-xl" />
-          <WordReveal id="intro-statement" className="intro-statement">
-            I work at the intersection of business operations, systems and data &mdash; understanding how a
-            business actually operates, translating that logic into structured systems and workflows,
-            connecting operational data across platforms, and turning the result into reporting people can use.
-          </WordReveal>
-          <SiteMark className="site-mark-xl" />
-        </div>
-      </section>
-
-      <section className="work-section work-home shell" aria-labelledby="selected-work-heading">
-        <SectionHeading index="01" title="Selected work" note="Projects currently in progress. Case studies are being written from the source repositories." />
-        <div id="selected-work-heading" className="project-grid">
-          {projects.map((project) => <ProjectCard key={project.slug} project={project} />)}
-        </div>
-      </section>
-
-      <section className="capability-section shell" aria-labelledby="capabilities-heading">
-        <SectionHeading index="02" title="Capabilities" note="Tools support the solution. The starting point is always the business problem." />
-        <StackedCards id="capabilities-heading" className="capability-list">
-          {capabilityAreas.map((area) => (
-            <article key={area.index}>
-              <span>{area.index}</span>
-              <h3>{area.title}</h3>
-              <p>{area.focus}</p>
-              <div className="capability-stack">
-                <p className="stack-label">Stack</p>
-                <ul>{area.tools.map((tool) => <li key={tool}>{tool}</li>)}</ul>
+      <section className="metrics-band" aria-labelledby="metrics-title">
+        <div className="container">
+          <h2 id="metrics-title" className="visually-hidden">Professional snapshot</h2>
+          <dl className="metric-strip">
+            {homeMetrics.map((metric, index) => (
+              <div key={metric.label} data-reveal style={{ '--d': index } as React.CSSProperties}>
+                <dt>{metric.label}</dt>
+                <dd className="metric-value">{metric.value}</dd>
+                <dd className="metric-context">{metric.context}</dd>
               </div>
-            </article>
-          ))}
-        </StackedCards>
-        <Link className="text-link" href="/capabilities">Explore all capabilities <span aria-hidden="true">&rarr;</span></Link>
-      </section>
-
-      <section className="process-section shell" aria-labelledby="how-i-work-heading">
-        <SectionHeading index="03" title="How I work" note="The same four movements, whether the output is a system, a pipeline or a dashboard." />
-        <Reveal id="how-i-work-heading" className="process-grid" stagger={0.08} y={20}>
-          {howIWork.map((step) => (
-            <article key={step.index}>
-              <span>{step.index}</span>
-              <h3>{step.title}</h3>
-              <p>{step.copy}</p>
-            </article>
-          ))}
-        </Reveal>
-      </section>
-
-      <section className="scale-section shell" aria-labelledby="scale-heading">
-        <SectionHeading index="04" title="Built at scale." note="A snapshot of the systems, data, and workflows I&rsquo;ve worked with." />
-        <Reveal id="scale-heading" className="metrics-grid metrics-grid-six" stagger={0.06} y={18}>
-          {metrics.map((metric) => (
-            <div className="metric" key={metric.label}>
-              <Odometer value={metric.value} />
-              <span>{metric.label}</span>
-              <small>{metric.context}</small>
-            </div>
-          ))}
-        </Reveal>
-      </section>
-
-      <section className="about-section shell grid-12" aria-labelledby="about-heading">
-        <p className="eyebrow about-eyebrow">05 / About</p>
-        <div className="about-copy">
-          <h2 id="about-heading">I start from the operational problem, not the technology.</h2>
-          <p>
-            My projects usually begin with fragmented spreadsheets, manual approvals, disconnected data sources or
-            limited visibility for management. I analyse the current process, identify the business rules and
-            dependencies, design a practical to-be process, model the data, implement the operational system,
-            automate the repetitive steps, and connect the resulting data to reporting.
-          </p>
-          <p>
-            That work currently spans business process analysis, Lark Base implementation, workflow automation,
-            data integration, SQL / BigQuery and dashboard development.
-          </p>
-          <Link className="text-link" href="/about">Read more about me <span aria-hidden="true">&rarr;</span></Link>
+            ))}
+          </dl>
+          <p className="metric-source mono">{metricsSource}</p>
         </div>
       </section>
 
-      <CTA />
-    </PageShell>
+      <section className="section container" aria-labelledby="projects-title">
+        <SectionHead index="01" label="Selected projects" id="projects-title" title="Evidence over adjectives." intro="Three bodies of work, each with a stated scope: what I built, what the team built, and what is still in review." />
+        <div className="project-list">
+          {projects.map((project, index) => <ProjectPreview key={project.slug} project={project} flip={index % 2 === 1} />)}
+        </div>
+      </section>
+
+      <section className="section section-tint" aria-labelledby="capabilities-title">
+        <div className="container">
+          <SectionHead index="02" label="Core capabilities" id="capabilities-title" title="Where the work sits." />
+          <ol className="capability-list">
+            {capabilities.map((capability) => (
+              <li key={capability.index} data-reveal>
+                <span className="cap-index mono">{capability.index}</span>
+                <h3>{capability.title}</h3>
+                <p>{capability.copy}</p>
+                <p className="cap-tools mono">{capability.tools.join(' · ')}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="section container" aria-labelledby="experience-title">
+        <SectionHead index="03" label="Experience" id="experience-title" title="Roles, in brief." />
+        <ol className="role-list">
+          {experience.map((role) => (
+            <li key={role.slug} data-reveal>
+              <p className="role-period mono">{role.period}</p>
+              <div>
+                <h3>{role.employer}</h3>
+                <p className="role-title">{role.title}</p>
+              </div>
+              <ul className="role-highlights">{role.highlights.map((item) => <li key={item}>{item}</li>)}</ul>
+            </li>
+          ))}
+        </ol>
+        <Link href="/experience" className="text-link" data-reveal>Full experience <span className="arrow" aria-hidden="true">→</span></Link>
+      </section>
+
+      <section className="section container" aria-labelledby="stack-title">
+        <SectionHead index="04" label="Technical stack" id="stack-title" title="Tools, grouped by purpose." intro="Marked by where I used them: professional work at Yspace, team projects, or both." />
+        <div className="stack-grid">
+          {stack.map((group) => (
+            <div key={group.group} className="stack-group" data-reveal>
+              <h3 className="mono">{group.group}</h3>
+              <ul>
+                {group.items.map((item) => (
+                  <li key={item.name}><span>{item.name}</span><span className="stack-where mono">{whereLabel[item.where]}</span></li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <ContactCTA />
+    </>
   );
 }
