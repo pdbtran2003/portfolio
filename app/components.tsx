@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import type { Project } from './content';
+import { CursorLabel, Rule } from './motion';
 
 const navItems = [
   ['Home', '/'],
@@ -11,10 +12,23 @@ const navItems = [
   ['Contact', '/contact'],
 ];
 
+/**
+ * The personal "tran" wordmark and the "a" it is built around, both drawn as
+ * CSS masks rather than <img>. That way one asset renders in currentColor, so
+ * the same file works on the light surface and inverted on the dark band.
+ */
+export function SiteLogo({ className }: { className?: string }) {
+  return <span className={`site-logo ${className ?? ''}`.trim()} aria-hidden="true" />;
+}
+
+export function SiteMark({ className }: { className?: string }) {
+  return <span className={`site-mark ${className ?? ''}`.trim()} aria-hidden="true" />;
+}
+
 export function SiteHeader() {
   return (
     <header className="site-header">
-      <Link className="wordmark" href="/">Phan Dang Bao Tran</Link>
+      <Link className="wordmark" href="/"><SiteLogo /><span className="visually-hidden">Phan Dang Bao Tran</span></Link>
       <nav className="desktop-nav" aria-label="Primary navigation">
         {navItems.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
       </nav>
@@ -33,7 +47,8 @@ export function SiteFooter() {
   return (
     <footer className="site-footer shell">
       <div>
-        <p className="wordmark">Phan Dang Bao Tran</p>
+        <p className="wordmark"><SiteLogo /></p>
+        <p className="footer-name">Phan Dang Bao Tran</p>
         <p>Business &amp; Data Analyst</p>
       </div>
       <nav aria-label="Footer navigation">
@@ -65,7 +80,8 @@ export function PageHero({ eyebrow, title, intro }: { eyebrow: string; title: st
 
 export function SectionHeading({ index, title, note }: { index?: string; title: string; note?: string }) {
   return (
-    <div className="section-heading">
+    <div className="section-heading has-rule">
+      <Rule />
       <div>{index && <span>{index}</span>}<h2>{title}</h2></div>
       {note && <p>{note}</p>}
     </div>
@@ -73,6 +89,15 @@ export function SectionHeading({ index, title, note }: { index?: string; title: 
 }
 
 export function ProjectVisual({ project, compact = false }: { project: Project; compact?: boolean }) {
+  if (project.status === 'draft') {
+    return (
+      <div className="project-visual project-visual-draft" role="img" aria-label={`${project.title} case study in preparation`}>
+        <div className="visual-meta"><span>{project.index}</span><span>In progress</span></div>
+        <p className="visual-draft-title">{project.title}</p>
+        <p className="visual-draft-note">Case study in preparation</p>
+      </div>
+    );
+  }
   const nodes = project.flow.slice(0, compact ? 5 : 7);
   return (
     <div className={`project-visual ${project.accent ? 'project-visual-accent' : ''}`} aria-label={`${project.title} conceptual diagram`} role="img">
@@ -90,8 +115,22 @@ export function ProjectVisual({ project, compact = false }: { project: Project; 
 }
 
 export function ProjectCard({ project, featured = false }: { project: Project; featured?: boolean }) {
+  if (project.status === 'draft') {
+    return (
+      <article className="project-card project-card-draft">
+        <ProjectVisual project={project} compact />
+        <div className="project-card-copy">
+          <p className="eyebrow">In progress</p>
+          <div className="project-title-row"><h3>{project.title}</h3></div>
+          <p>Write-up pending source material.</p>
+        </div>
+      </article>
+    );
+  }
+
   return (
     <article className={`project-card ${featured ? 'project-card-featured' : ''}`}>
+      <CursorLabel label="Read case study">
       <Link href={`/work/${project.slug}`} aria-label={`Read the ${project.title} case study`}>
         <ProjectVisual project={project} compact />
         <div className="project-card-copy">
@@ -100,6 +139,7 @@ export function ProjectCard({ project, featured = false }: { project: Project; f
           <p>{project.summary}</p>
         </div>
       </Link>
+      </CursorLabel>
     </article>
   );
 }

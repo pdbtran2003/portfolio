@@ -38,7 +38,7 @@ export default function CapabilitiesPage() {
       <section className="foundation shell">
         <p className="eyebrow">Engineering foundations</p>
         <h2>Technical foundations support the systems and data work.</h2>
-        <TagList items={['Python', 'SQL', '.NET exposure', 'FastAPI — learning / project work', 'SQLAlchemy — learning / project work', 'Git', 'GitHub', 'Docker']} />
+        <TagList items={['Python', 'TypeScript / Node.js', 'SQL', 'PostgreSQL', 'FastAPI', 'SQLAlchemy / Alembic', 'Fastify / Drizzle ORM', 'Redis', 'pytest / Vitest', 'Docker', 'Git / GitHub']} />
       </section>
       <CTA />
     </PageShell>

@@ -34,7 +34,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 .hero-copy { grid-column: 2 / span 9; }
 .hero-index { grid-column: 12; align-self: end; margin: 0; font-size: 12px; letter-spacing: .08em; }
 .eyebrow { margin: 0 0 24px; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
-h1 { margin: 0; max-width: 1120px; font: 700 clamp(54px, 6vw, 84px)/1.08 var(--display); letter-spacing: -.045em; }
+h1 { margin: 0; max-width: min(100%, 1180px); font: 700 clamp(40px, 5.6vw, 84px)/1.08 var(--display); letter-spacing: -.045em; }
 .lede { max-width: 690px; margin: 40px 0 0; color: var(--muted); font-size: 18px; line-height: 1.6; }
 .button-row { display: flex; gap: 10px; margin-top: 40px; }
 .button { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 20px; padding: 0 18px; border: 1px solid var(--ink); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; transition: background .2s, color .2s; }
@@ -46,9 +46,9 @@ h1 { margin: 0; max-width: 1120px; font: 700 clamp(54px, 6vw, 84px)/1.08 var(--d
 .section-topline .eyebrow { margin: 0; }
 .section-note { max-width: 380px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
 .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.metric { min-height: 190px; padding: 32px 24px; border-right: 1px solid var(--line); display: flex; flex-direction: column; justify-content: space-between; }
+.metric { min-height: 248px; padding: 36px 24px 32px; border-right: 1px solid var(--line); display: flex; flex-direction: column; justify-content: space-between; }
 .metric:last-child { border-right: 0; }
-.metric strong { font: 700 clamp(42px, 5vw, 70px)/1 var(--display); letter-spacing: -.04em; }
+.metric strong { font: 700 clamp(52px, 6.4vw, 104px)/1 var(--display); letter-spacing: -.045em; }
 .metric span { color: var(--muted); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
 
 @media (max-width: 900px) {
@@ -59,7 +59,7 @@ h1 { margin: 0; max-width: 1120px; font: 700 clamp(54px, 6vw, 84px)/1.08 var(--d
   .hero { min-height: auto; padding-block: 88px 96px; display: block; }
   .hero-copy { max-width: 720px; }
   .hero-index { display: none; }
-  h1 { font-size: clamp(44px, 11vw, 64px); line-height: 1.08; }
+  h1 { line-height: 1.1; }
   .lede { font-size: 16px; margin-top: 28px; }
   .metrics-grid { grid-template-columns: repeat(2, 1fr); }
   .metric:nth-child(2) { border-right: 0; }
@@ -69,7 +69,7 @@ h1 { margin: 0; max-width: 1120px; font: 700 clamp(54px, 6vw, 84px)/1.08 var(--d
 @media (max-width: 560px) {
   .desktop-cta { display: none; }
   .hero { padding-top: 72px; }
-  h1 { font-size: 44px; letter-spacing: -.035em; }
+  h1 { letter-spacing: -.035em; }
   .button-row { align-items: stretch; flex-direction: column; }
   .button { width: 100%; }
   .section-topline { display: block; }
@@ -261,7 +261,7 @@ h3 { font-size: 24px; line-height: 1.25; }
 .back-link { display: inline-block; margin-bottom: 90px; border-bottom: 1px solid currentColor; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
 .case-heading { padding-bottom: 60px; }
 .case-title { grid-column: 1 / span 8; }
-.case-title h1 { font-size: clamp(54px, 6vw, 86px); }
+.case-title h1 { font-size: clamp(36px, 4.8vw, 72px); }
 .case-meta { grid-column: 9 / -1; margin: 0; border-top: 1px solid var(--line); }
 .case-meta > div { padding: 14px 0; border-bottom: 1px solid var(--line); }
 .case-meta dt { margin-bottom: 5px; color: var(--muted); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
@@ -311,7 +311,6 @@ h3 { font-size: 24px; line-height: 1.25; }
   .site-footer .copyright { grid-column: auto; }
   .page-hero { min-height: auto; padding-block: 92px 72px; display: block; }
   .page-hero-eyebrow { padding-top: 0; }
-  .page-hero-copy h1 { font-size: clamp(46px, 11vw, 64px); }
   .section-heading { grid-template-columns: 1fr; }
   .section-heading > p { justify-self: start; }
   .metrics-grid-six { grid-template-columns: repeat(2, 1fr); }
@@ -357,7 +356,6 @@ h3 { font-size: 24px; line-height: 1.25; }
 @media (max-width: 560px) {
   .wordmark { font-size: 13px; }
   .site-footer nav { grid-template-columns: 1fr; }
-  .hero h1, .page-hero-copy h1, .case-title h1 { font-size: 42px; }
   .metrics-grid-six { grid-template-columns: 1fr; }
   .metrics-grid-six .metric { border-right: 0 !important; border-bottom: 1px solid var(--line) !important; }
   .metrics-grid-six .metric:last-child { border-bottom: 0 !important; }
@@ -402,3 +400,191 @@ h3 { font-size: 24px; line-height: 1.25; }
   .outcome-section blockquote { margin-top: 72px; font-size: 30px; }
   .next-project > a { font-size: 34px; }
 }
+
+/* ============================================================
+   Motion layer
+   GSAP + Lenis. Everything here is decoration: the page is
+   complete and readable with JavaScript off, and every effect
+   is skipped under prefers-reduced-motion.
+   ============================================================ */
+
+/* Lenis drives scrolling, so the native smoothing has to stand down. */
+html.lenis { scroll-behavior: auto; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+
+/* Masked line reveal — the mask box would otherwise clip descenders. */
+.split-line { padding-bottom: .12em; margin-bottom: -.12em; }
+
+/* Animated 1px rule, replacing a static border-top. */
+.rule { position: absolute; display: block; background: var(--line); }
+.rule-horizontal { inset-inline: 0; top: 0; height: 1px; transform-origin: left center; }
+.rule-vertical { inset-block: 0; left: 0; width: 1px; transform-origin: center top; }
+.has-rule { position: relative; border-top: 0 !important; }
+
+/* Odometer digits. The ::before sizes the column to one glyph so the
+   absolutely positioned strip can roll behind it. */
+.odo { display: inline-flex; align-items: flex-end; }
+.odo-col { position: relative; display: inline-block; overflow: hidden; vertical-align: bottom; }
+.odo-col::before { content: "0"; display: block; visibility: hidden; }
+.odo-inner { position: absolute; top: 0; left: 0; will-change: transform; }
+.odo-digit { display: block; }
+.odo-static { display: inline-block; align-self: flex-end; vertical-align: baseline; }
+.is-rolling .odo-plain { display: none; }
+
+/* Stacked capability cards. Opaque surface + 1px border so a pinned card
+   actually covers the one beneath it. */
+.stack-release { height: 1px; }
+.capability-list.is-stacked { border-top: 0; }
+.capability-list.is-stacked article {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 32px 28px;
+  margin-bottom: 20px;
+  transform-origin: center top;
+}
+
+/* Cursor-tracking label on project cards. */
+.cursor-label-host { position: relative; }
+.cursor-label {
+  position: absolute; top: 0; left: 0; z-index: 5; pointer-events: none;
+  display: inline-flex; align-items: center;
+  padding: 8px 14px; background: var(--ink); color: var(--surface);
+  font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+  white-space: nowrap; opacity: 0;
+}
+
+/* Sticky header tightens once you leave the top. */
+.site-header { transition: height .3s ease, background-color .3s ease; }
+.site-header.is-scrolled { height: 64px; background: color-mix(in srgb, var(--surface) 88%, transparent); }
+
+@media (prefers-reduced-motion: reduce) {
+  .rule { transform: none !important; }
+  .cursor-label { display: none; }
+  .site-header { transition: none; }
+}
+
+/* ============================================================
+   Home information architecture
+   Hero -> Selected Work -> Capabilities -> How I Work -> Scale
+   -> About -> Contact
+   ============================================================ */
+
+.work-home, .capability-section, .process-section, .scale-section { padding-bottom: 160px; }
+.about-section { padding-bottom: 140px; align-items: start; }
+
+/* Three projects across the grid instead of two. */
+.work-home .project-grid { gap: 56px 24px; }
+.work-home .project-card { grid-column: span 4; }
+
+/* A project whose case study is not written yet. */
+.project-visual-draft { display: flex; flex-direction: column; justify-content: space-between; }
+.visual-draft-title { margin: 0; font: 600 clamp(24px, 2.4vw, 34px)/1.1 var(--display); letter-spacing: -.03em; }
+.visual-draft-note { margin: 0; color: var(--muted); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+.project-card-draft .project-title-row h3 { font-size: 22px; }
+.project-card-draft .project-card-copy .eyebrow { color: var(--muted); }
+
+/* How I work — four movements. */
+.process-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
+.process-grid article { min-height: 260px; padding: 28px 22px 32px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px; }
+.process-grid article:last-child { border-right: 0; }
+.process-grid span { color: var(--muted); font-size: 11px; letter-spacing: .1em; }
+.process-grid h3 { margin: 0; font-size: 24px; font-weight: 600; }
+.process-grid p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
+
+/* About. */
+.about-eyebrow { grid-column: 1 / span 2; padding-top: 6px; }
+.about-copy { grid-column: 3 / span 9; max-width: 760px; }
+.about-copy h2 { margin: 0 0 32px; font-size: clamp(30px, 3.4vw, 46px); }
+.about-copy p { margin: 0 0 20px; color: var(--muted); font-size: 16px; line-height: 1.65; }
+.about-copy .text-link { margin-top: 12px; }
+
+@media (max-width: 1100px) {
+}
+
+@media (max-width: 900px) {
+  .work-home .project-card { grid-column: span 6; }
+  .process-grid { grid-template-columns: repeat(2, 1fr); }
+  .process-grid article:nth-child(2n) { border-right: 0; }
+  .about-section { display: block; }
+  .about-eyebrow { padding-top: 0; }
+  .about-copy { max-width: none; }
+  .work-home, .capability-section, .process-section, .scale-section { padding-bottom: 104px; }
+}
+
+@media (max-width: 640px) {
+  .work-home .project-card { grid-column: 1 / -1; }
+  .process-grid { grid-template-columns: 1fr; }
+  .process-grid article { min-height: 0; border-right: 0; }
+}
+
+/* ============================================================
+   Opening sequence — hero lockup + dark intro band
+   ============================================================ */
+
+:root { --ink-soft: #8a8a8a; --brand: #142e5d; }
+
+/* Brand assets are masks, not images, so they inherit currentColor and can be
+   inverted on the dark band without a second file. */
+.wordmark { display: inline-flex; align-items: center; gap: 10px; }
+.site-logo, .site-mark {
+  display: block; flex: none; background-color: currentColor;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-position: center; mask-position: center;
+  -webkit-mask-size: contain; mask-size: contain;
+}
+.site-logo {
+  width: 72px; aspect-ratio: 726 / 427; color: var(--brand);
+  -webkit-mask-image: url('../public/logo-tran.png'); mask-image: url('../public/logo-tran.png');
+}
+.site-mark {
+  width: 22px; aspect-ratio: 1;
+  -webkit-mask-image: url('../public/mark-a.png'); mask-image: url('../public/mark-a.png');
+}
+.site-mark-xl { width: clamp(72px, 9vw, 132px); }
+.footer-name { font-family: var(--display); font-size: 15px; font-weight: 700; letter-spacing: .02em; text-transform: uppercase; }
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
+/* Hero: statement left, positioning and actions right, both sitting on the
+   same baseline. Overrides the generic .hero grid rules above. */
+.hero { min-height: 0; padding-block: clamp(64px, 8vw, 120px) clamp(56px, 7vw, 96px); display: block; }
+.hero-lockup { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: 32px clamp(32px, 5vw, 80px); align-items: end; }
+.hero-headline { max-width: none; font-size: clamp(38px, 5.4vw, 84px); line-height: 1.06; }
+.hero-line-mask { display: block; overflow: hidden; padding-bottom: .09em; margin-bottom: -.09em; }
+.hero-line { display: block; }
+/* The held-back first line. Kept at 3:1 against the surface so it still
+   passes large-text contrast rather than fading to decoration. */
+.hero-line.is-dim { color: var(--ink-soft); }
+.hero-aside { align-self: end; padding-bottom: .5em; }
+.hero-aside p { max-width: 38ch; margin: 0; color: var(--muted); font-size: 15px; line-height: 1.6; }
+.hero-aside .button-row { margin-top: 28px; }
+
+/* The dark band. One full-bleed inversion of the palette — no new colours. */
+.intro-band { background: var(--ink); color: var(--surface); padding-block: clamp(88px, 11vw, 168px); }
+.intro-band-inner { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: clamp(24px, 5vw, 72px); align-items: center; }
+.intro-band .site-mark { color: var(--surface); opacity: .14; }
+.intro-statement {
+  max-width: 30ch; margin: 0 auto; text-align: center;
+  font: 500 clamp(22px, 2.6vw, 40px)/1.38 var(--display); letter-spacing: -.02em;
+}
+/* Words are only dimmed, never hidden: with no JavaScript the whole
+   statement reads at full strength. */
+.reveal-word { will-change: opacity; }
+
+@media (max-width: 900px) {
+  .hero-lockup { grid-template-columns: 1fr; align-items: start; }
+  .hero-aside { padding-bottom: 0; }
+  .intro-band-inner { grid-template-columns: 1fr; }
+  .intro-band .site-mark { display: none; }
+  .intro-statement { max-width: none; text-align: left; }
+}
+
+/* Technology stack inside a capability card. Set as small chips so it reads
+   as metadata rather than competing with the focus sentence above it. */
+.capability-stack { display: flex; flex-direction: column; gap: 10px; }
+.stack-label { margin: 0; color: var(--muted); font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+.capability-stack ul { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.capability-stack li { padding: 4px 9px; border: 1px solid var(--line); font-size: 11px; line-height: 1.4; letter-spacing: .02em; }

@@ -29,6 +29,28 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const currentIndex = projects.findIndex((item) => item.slug === slug);
   const nextProject = projects[(currentIndex + 1) % projects.length];
 
+  if (project.status === 'draft') {
+    return (
+      <PageShell>
+        <article className="case-study">
+          <header className="case-hero shell">
+            <Link className="back-link" href="/work">&larr; Back to work</Link>
+            <div className="case-heading grid-12">
+              <div className="case-title">
+                <p className="eyebrow">Case study / {project.index}</p>
+                <h1>{project.title}</h1>
+                <p className="lede">This project is in progress. The case study is being written from the source repository.</p>
+              </div>
+            </div>
+          </header>
+          <section className="case-section shell">
+            <Link className="text-link" href={`/work/${nextProject.slug}`}>Next project: {nextProject.title} <span aria-hidden="true">&rarr;</span></Link>
+          </section>
+        </article>
+      </PageShell>
+    );
+  }
+
   return (
     <PageShell>
       <article className="case-study">
@@ -43,7 +65,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <dl className="case-meta">
               <div><dt>Category</dt><dd>{project.category}</dd></div>
               <div><dt>Primary lens</dt><dd>{project.featuredCapability}</dd></div>
-              <div><dt>Public presentation</dt><dd>{project.accent ? 'Personal product concept' : 'Anonymised project work'}</dd></div>
+              {project.presentation && <div><dt>Public presentation</dt><dd>{project.presentation}</dd></div>}
             </dl>
           </div>
           <ProjectVisual project={project} />

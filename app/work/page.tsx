@@ -4,16 +4,16 @@ import { projects } from '../content';
 
 export const metadata: Metadata = {
   title: 'Selected Work',
-  description: 'Case studies across business process design, operational systems, data integration, automation and analytics.',
+  description: 'Current projects across business systems, data integration, automation and reporting.',
 };
 
 export default function WorkPage() {
   return (
     <PageShell>
       <PageHero
-        eyebrow="Selected Work / 01—05"
+        eyebrow="Selected Work / 01—03"
         title="Work built around real business operations."
-        intro="Five case studies showing how process analysis, system modelling, implementation, data integration and analytics connect."
+        intro="Three projects currently in progress. Case studies are being written from the source repositories."
       />
       <section className="work-page shell" aria-label="Portfolio projects">
         <ProjectGrid projects={projects} />
