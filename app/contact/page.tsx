@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { contact } from '../content';
+import { withBase } from '../ui/base';
 import { PageHeader } from '../ui/components';
 
 export const metadata: Metadata = {
@@ -15,8 +16,8 @@ export default function ContactPage() {
     contact.email && { label: 'Email', value: contact.email, href: `mailto:${contact.email}` },
     contact.linkedin && { label: 'LinkedIn', value: contact.linkedin.replace(/^https?:\/\/(www\.)?/, ''), href: contact.linkedin },
     contact.github && { label: 'GitHub', value: contact.github.replace(/^https?:\/\//, ''), href: contact.github },
-    contact.cv && { label: 'CV', value: 'Download PDF', href: contact.cv },
-  ].filter(Boolean) as Array<{ label: string; value: string; href: string }>;
+    contact.cv && { label: 'CV', value: 'Download PDF', href: withBase(contact.cv), download: true },
+  ].filter(Boolean) as Array<{ label: string; value: string; href: string; download?: boolean }>;
 
   return (
     <>
@@ -29,7 +30,7 @@ export default function ContactPage() {
         <ul className="channels">
           {channels.map((channel) => (
             <li key={channel.label} data-reveal>
-              <a href={channel.href} target={channel.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer">
+              <a href={channel.href} target={channel.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" download={channel.download || undefined}>
                 <span className="mono">{channel.label}</span>
                 <span className="channel-value">{channel.value} <span aria-hidden="true">↗</span></span>
               </a>
@@ -37,6 +38,8 @@ export default function ContactPage() {
           ))}
         </ul>
         <div className="contact-side" data-reveal>
+          <p className="eyebrow">Based in</p>
+          <p>Da Nang, Vietnam</p>
           <p className="eyebrow">Focus areas</p>
           <ul className="dash-list">{focus.map((item) => <li key={item}>{item}</li>)}</ul>
           <Link href="/projects" className="text-link">Review the projects first <span className="arrow" aria-hidden="true">→</span></Link>

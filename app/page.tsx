@@ -1,4 +1,7 @@
+import Image from 'next/image';
 import Link from 'next/link';
+import portrait from './assets/portrait.jpg';
+import { withBase } from './ui/base';
 import { capabilities, contact, experience, homeMetrics, metricsSource, profile, projects, stack } from './content';
 import { ContactCTA, ProjectPreview, SectionHead } from './ui/components';
 
@@ -14,16 +17,19 @@ export default function HomePage() {
           <p className="lede" data-reveal style={{ '--d': 2 } as React.CSSProperties}>{profile.intro}</p>
           <div className="hero-actions" data-reveal style={{ '--d': 3 } as React.CSSProperties}>
             <Link href="/projects" className="btn">Explore projects <span className="arrow" aria-hidden="true">→</span></Link>
-            {contact.cv && <a href={contact.cv} className="btn btn-ghost" download>Download CV</a>}
+            {contact.cv && <a href={withBase(contact.cv)} className="btn btn-ghost" download>Download CV</a>}
             <Link href="/contact" className="text-link">Get in touch</Link>
           </div>
         </div>
 
         <aside className="hero-index" aria-label="At a glance" data-reveal style={{ '--d': 2 } as React.CSSProperties}>
+          <figure className="portrait">
+            <Image src={portrait} alt={`Portrait of ${profile.name}`} sizes="(max-width: 860px) 200px, 240px" priority unoptimized />
+          </figure>
           <p className="eyebrow">At a glance</p>
           <dl>
             <div><dt>Focus</dt><dd>Data integration<br />Database development<br />Analytics</dd></div>
-            <div><dt>Latest role</dt><dd>Yspace — Data Integration &amp; Business Systems<span className="mono dim">Oct 2025 — Aug 2026</span></dd></div>
+            <div><dt>Latest role</dt><dd>Yspace — Data Analyst / Business Analyst<span className="mono dim">Oct 2025 — Aug 2026</span></dd></div>
             <div><dt>Team projects</dt><dd>Vec Att · Vecinn<span className="mono dim">PostgreSQL · Python · TypeScript</span></dd></div>
           </dl>
         </aside>
@@ -46,7 +52,7 @@ export default function HomePage() {
       </section>
 
       <section className="section container" aria-labelledby="projects-title">
-        <SectionHead index="01" label="Selected projects" id="projects-title" title="Evidence over adjectives." intro="Three bodies of work, each with a stated scope: what I built, what the team built, and what is still in review." />
+        <SectionHead index="01" label="Selected projects" id="projects-title" title="Evidence over adjectives." intro="Three bodies of work, each with a stated scope: what I built and what the team built." />
         <div className="project-list">
           {projects.map((project, index) => <ProjectPreview key={project.slug} project={project} flip={index % 2 === 1} />)}
         </div>

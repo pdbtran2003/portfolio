@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { approach } from '../content';
+import { approach, education, languages } from '../content';
 import { ContactCTA, PageHeader, SectionHead } from '../ui/components';
 
 export const metadata: Metadata = {
@@ -29,9 +29,30 @@ export default function AboutPage() {
         <div className="prose prose-large" data-reveal>
           <h2 id="background-title" className="visually-hidden">Background</h2>
           <p>At Yspace I worked with enterprise clients on two parallel tracks: connecting e-commerce and operational data into BigQuery and Lark Base for reporting, and turning client processes into business modules on Lark.</p>
-          <p>Alongside that, I build backend features for two team products—attendance and payroll on PostgreSQL and TypeScript, and billing and job scheduling on Python and PostgreSQL. That work taught me to put rules in the database, make jobs safe to re-run and state clearly what is finished and what is still in review.</p>
-          <p>Earlier, as a teaching assistant at ILA English Center and an audit intern at AVN Audit, I tracked class performance across 6+ classes and reviewed 500+ transaction records for discrepancies. Different settings, same habit: careful records and clear reporting.</p>
+          <p>Alongside that, I build backend features for two team products—attendance and payroll on PostgreSQL and TypeScript, and billing and job scheduling on Python and PostgreSQL. That work taught me to put rules in the database, make jobs safe to re-run and be explicit about which parts are mine.</p>
+          <p>Earlier, as a teaching assistant at ILA English Center and an accounting intern at AVN Audit, I tracked class performance across 6+ classes and reviewed 500+ transaction records for discrepancies. Different settings, same habit: careful records and clear reporting.</p>
         </div>
+      </section>
+
+      <section className="section section-tight container about-grid" aria-labelledby="education-title">
+        <div className="about-label" data-reveal><p className="eyebrow">Education</p></div>
+        <h2 id="education-title" className="visually-hidden">Education</h2>
+        <ol className="education">
+          {education.map((item) => (
+            <li key={item.institution} data-reveal>
+              <p className="mono dim">{item.period} · {item.location}</p>
+              <h3>{item.institution}</h3>
+              <p className="edu-award">{item.award}</p>
+              <p className="edu-detail">{item.detail}</p>
+            </li>
+          ))}
+        </ol>
+        <div className="about-label" data-reveal><p className="eyebrow">Languages</p></div>
+        <dl className="languages" data-reveal>
+          {languages.map((language) => (
+            <div key={language.name}><dt>{language.name}</dt><dd className="mono">{language.level}</dd></div>
+          ))}
+        </dl>
       </section>
 
       <section className="section section-tint" aria-labelledby="approach-title">

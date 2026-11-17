@@ -20,14 +20,20 @@ export const profile = {
  */
 export const contact: { github: string | null; email: string | null; linkedin: string | null; cv: string | null } = {
   github: 'https://github.com/pdbtran2003',
-  email: null,
-  linkedin: null,
-  cv: null,
+  email: 'tranpdb.work@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/trân-phan-66157a253',
+  cv: '/Phan-Dang-Bao-Tran-CV.pdf',
 };
 
-/** Reported scope at Yspace (Oct 2025 – Aug 2026), across both workstreams. */
+/** From the owner's CV. */
+export const languages = [
+  { name: 'Vietnamese', level: 'Native' },
+  { name: 'English', level: 'B2 · L 7.5 · S 7.0 · R 7.5 · W 8.5' },
+];
+
+/** The owner's own contribution at Yspace (Oct 2025 – Aug 2026), across both workstreams. */
 export const metrics = [
-  { value: '8+', label: 'Enterprise clients', context: 'Worked with across both workstreams' },
+  { value: '8', label: 'Enterprise clients', context: 'Worked with across both workstreams' },
   { value: '500K+', label: 'Records processed', context: 'Across data-integration work' },
   { value: '15+', label: 'Dashboards & reports', context: 'Developed or supported' },
   { value: '12+', label: 'Business modules', context: 'Implemented or configured on Lark' },
@@ -35,7 +41,7 @@ export const metrics = [
   { value: '70+', label: 'Lark Base automations', context: 'Workflows and automations' },
 ];
 export const homeMetrics = metrics.slice(0, 4);
-export const metricsSource = 'Reported scope at Yspace, October 2025 – August 2026, across both workstreams.';
+export const metricsSource = 'My own work at Yspace, October 2025 – August 2026, across both workstreams.';
 
 export const capabilities = [
   {
@@ -137,14 +143,14 @@ export const experience: Role[] = [
   {
     slug: 'yspace',
     employer: 'Yspace',
-    title: 'Data Integration & Business Systems Implementation',
+    title: 'Data Analyst / Business Analyst',
     period: 'Oct 2025 — Aug 2026',
     summary:
       'Client-facing work for enterprise clients on two parallel tracks: connecting platform data into BigQuery and Lark Base for reporting (DA), and implementing operational modules on Lark (BAP).',
     tracks: [
       {
         label: 'DA — Data integration & analytics',
-        copy: 'Connected e-commerce and operational platforms to BigQuery and Lark Base: paginated API ingestion, incremental sync with last-sync checkpoints, type conversion, deduplication and business-key MERGE / upsert, batched writes to Lark Base, then SQL KPI datasets and Looker Studio dashboards. Ran discovery, access collection, review and handover with each client.',
+        copy: 'Connected e-commerce and marketing platforms—including Shopee, TikTok Shop and Facebook—to BigQuery and Lark Base: paginated API ingestion, incremental sync with last-sync checkpoints, type conversion, deduplication and business-key MERGE / upsert, batched writes to Lark Base, then SQL KPI datasets and Looker Studio dashboards. Ran discovery, access collection, review and handover with each client.',
         tags: ['Lark AnyCross', 'Elton', 'BigQuery', 'SQL', 'Looker Studio', 'JavaScript', 'Python', 'n8n'],
       },
       {
@@ -164,7 +170,7 @@ export const experience: Role[] = [
     slug: 'ila',
     employer: 'ILA English Center',
     title: 'Teaching Assistant',
-    period: 'Aug 2024 — Jul 2025',
+    period: 'Aug 2024 — Aug 2025',
     location: 'Da Nang',
     summary:
       'Supported instruction across 6+ classes of 10–20 students each and adapted learning materials. Tracked class performance in Google Sheets to monitor progress and recommend improvements, and coordinated with teachers, students and parents, including grading support and inquiries.',
@@ -174,13 +180,31 @@ export const experience: Role[] = [
   {
     slug: 'avn',
     employer: 'AVN Audit',
-    title: 'Intern',
+    title: 'Accounting Intern',
     period: 'Mar 2025 — May 2025',
     location: 'Da Nang',
     summary:
       'Gathered and documented client financial-process information for audit-related work. Entered and analysed 500+ transaction records in Excel to identify discrepancies, and summarised findings in reports for further review, handling sensitive financial data with accuracy and confidentiality.',
     highlights: ['500+ transaction records analysed in Excel for discrepancies.'],
     tools: ['Excel'],
+  },
+];
+
+/** From the owner's CV. */
+export const education = [
+  {
+    institution: 'Coventry University',
+    location: 'Coventry, UK',
+    award: 'BA (Hons) International Business',
+    period: 'Sep 2024 — Nov 2025',
+    detail: 'First Class Honours',
+  },
+  {
+    institution: 'University of Economics, University of Da Nang',
+    location: 'Da Nang, Vietnam',
+    award: 'BTEC Higher Nationals Diploma (Level 4 & 5)',
+    period: 'Sep 2021 — Aug 2024',
+    detail: 'GPA 480 / 480',
   },
 ];
 
@@ -239,7 +263,7 @@ export const projects: Project[] = [
     period: 'Oct 2025 — Aug 2026',
     presentation: 'Client work · anonymised',
     context: [
-      'At Yspace I worked with enterprise clients on two parallel tracks. The data track (DA) moved data from external platforms into BigQuery and Lark Base so it could be reported on. The business-application track (BAP) turned how a client operates into modules on Lark.',
+      'At Yspace I worked with enterprise clients on two parallel tracks. The data track (DA) moved data from e-commerce and marketing platforms such as Shopee, TikTok Shop and Facebook into BigQuery and Lark Base so it could be reported on. The business-application track (BAP) turned how a client operates into modules on Lark.',
       'Both tracks were client-facing. Each engagement ran from discovery and scope, through implementation, to review and handover. Client names, datasets and records are left out.',
     ],
     problems: [
@@ -281,7 +305,7 @@ export const projects: Project[] = [
     tools: ['Lark Base', 'Lark AnyCross', 'Elton', 'BigQuery', 'SQL', 'Looker Studio', 'JavaScript', 'Python', 'n8n'],
     previewTools: ['BigQuery', 'SQL', 'Lark AnyCross', 'Looker Studio'],
     principle: 'Understand how the client works before deciding what the system or the data should hold.',
-    note: 'Client names, datasets and records are anonymised. Figures are reported scope across both tracks.',
+    note: 'Client names, datasets and records are anonymised. Figures are my own contribution across both tracks.',
   },
   {
     slug: 'vec-att',
@@ -292,7 +316,8 @@ export const projects: Project[] = [
       'A multi-tenant attendance and payroll platform. I built per-shift timesheet data, the Lark Base payslip integration and the payroll data model on PostgreSQL.',
     contribution: 'Timesheet and payroll data, Lark Base integrations and PostgreSQL schema migrations.',
     kind: 'Team product · team of three',
-    status: 'Partly merged · payroll in code review',
+    status: 'In active development',
+    period: 'Sep 2026 — Present',
     context: [
       'Vec Att is a multi-tenant SaaS for shift-based attendance, timesheets, leave, approvals and payslips. A team of three builds it on TypeScript, Fastify and PostgreSQL 17.',
       'The platform separates tenant data with row-level security, runs background work on a PostgreSQL job queue and syncs datasets incrementally to Lark Base, Google Sheets and webhooks. My work turns raw attendance into per-shift timesheet data, moves that data to and from Lark Base, and models payroll.',
@@ -309,12 +334,12 @@ export const projects: Project[] = [
       'Per-shift sync dataset',
       'Lark Base payslip integration',
       'Recompute concurrency fix',
-      'Payroll schema and engine (in review)',
-      'Date-range timesheet periods (in review)',
-      'Excel timesheet export (in review)',
+      'Payroll schema and engine',
+      'Date-range timesheet periods',
+      'Excel timesheet export',
     ],
     flowLabel: 'Attendance to payslip',
-    flowCaption: 'Simplified flow of the parts described on this page. Steps marked in review are not yet merged.',
+    flowCaption: 'Simplified flow of the parts described on this page.',
     flow: ['Attendance events', 'Per-shift timesheet', 'Recompute job', 'Sync dataset', 'Lark Base', 'Payroll run', 'Payslip'],
     entities: ['Attendance event', 'Shift', 'Timesheet day', 'Timesheet period', 'Pay profile', 'Allowance', 'Payroll run', 'Payslip'],
     boundary:
@@ -324,7 +349,7 @@ export const projects: Project[] = [
       { title: 'Native Lark Base fields', copy: 'Real date, select and checkbox columns instead of text, so HR can filter and group the data in Lark Base without extra formulas.' },
       { title: 'Payslip round trip', copy: 'Per-organisation source configuration, token-authenticated inbound delivery from Lark Base workflows, and write-back of employee confirmations or disputes.' },
       { title: 'Recompute lock', copy: 'Transaction-scoped PostgreSQL advisory locks serialise recomputation per employee, removing a lost-update race between concurrent jobs.' },
-      { title: 'Payroll model (in review)', copy: 'Pay profiles and allowances stored as date ranges with GiST exclusion constraints, so they cannot overlap. A pure, versioned engine computes gross pay from per-shift data.' },
+      { title: 'Payroll model', copy: 'Pay profiles and allowances stored as date ranges with GiST exclusion constraints, so they cannot overlap. A pure, versioned engine computes gross pay from per-shift data.' },
     ],
     decisions: [
       { title: 'Why a settle window on the watermark', copy: 'The calculation timestamp is set when a transaction starts, so a row that commits late can land behind the watermark. Re-sending the last few minutes is cheaper than missing a row, and the upsert makes it harmless.' },
@@ -332,19 +357,18 @@ export const projects: Project[] = [
       { title: 'Advisory locks under READ COMMITTED', copy: 'The per-employee lock works because every statement after acquiring it reads a fresh snapshot, so the second job sees the first job’s result instead of overwriting it.' },
     ],
     outcomes: [
-      'Merged: a per-shift attendance dataset synced to Lark Base with native field types.',
-      'Merged: payslip source configuration, inbound delivery and status write-back with Lark Base.',
-      'Merged: a per-employee advisory lock for timesheet recomputation.',
-      'In code review: the payroll schema and engine, a data-preserving migration to date-range timesheet periods, and a multi-sheet Excel export, with about 250 automated tests.',
+      'A per-shift attendance dataset synced to Lark Base with native field types.',
+      'Payslip source configuration, inbound delivery and status write-back with Lark Base.',
+      'A per-employee advisory lock for timesheet recomputation.',
+      'The payroll schema and engine, a data-preserving migration to date-range timesheet periods, and a multi-sheet Excel export, with about 250 automated tests.',
     ],
     nextSteps: [
-      'Finish review and merge the payroll, date-range period and export branches.',
       'The advisory lock keys employees by hash, so two employees can occasionally share a lock. That only costs throughput today, but it is worth revisiting as tenants grow.',
     ],
     tools: ['TypeScript', 'Node.js', 'Fastify', 'PostgreSQL 17', 'Drizzle ORM', 'Lark Open API', 'ExcelJS', 'Vitest'],
     previewTools: ['PostgreSQL', 'TypeScript', 'Lark Open API'],
     principle: 'When the application alone cannot guarantee a rule, put it in the database.',
-    note: 'No production volumes are shown. Work marked “in code review” is not yet merged.',
+    note: 'No production volumes are shown.',
   },
   {
     slug: 'vecinn',
@@ -355,7 +379,8 @@ export const projects: Project[] = [
       'A room-rental platform for landlords. I built the utility-billing logic, a PostgreSQL-coordinated job scheduler and idempotent payment reminders.',
     contribution: 'Payments and operations: billing logic, job scheduler and notification idempotency.',
     kind: 'Team product · team of three',
-    status: 'Implemented on a feature branch · not yet merged',
+    status: 'In active development',
+    period: 'Jun 2026 — Present',
     context: [
       'Vecinn helps landlords manage houses, rooms, tenants, contracts and monthly charges. A team of three built it on FastAPI, PostgreSQL 16, Redis, React and Docker Compose.',
       'I owned the payments and operations side: turning meter readings into invoices, running daily jobs safely, and reminding landlords and tenants over Zalo.',
@@ -406,7 +431,7 @@ export const projects: Project[] = [
     tools: ['Python', 'FastAPI', 'SQLAlchemy (async)', 'PostgreSQL 16', 'Alembic', 'Redis', 'Docker Compose', 'pytest'],
     previewTools: ['PostgreSQL', 'Python', 'Redis'],
     principle: 'A job is only safe to schedule once it is safe to run twice.',
-    note: 'The payment and scheduler work sits on a feature branch and is not yet merged into the integration branch. No production volumes are shown.',
+    note: 'No production volumes are shown.',
   },
 ];
 
