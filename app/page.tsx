@@ -30,7 +30,7 @@ export default function HomePage() {
           <dl>
             <div><dt>Focus</dt><dd>Data integration<br />Database development<br />Analytics</dd></div>
             <div><dt>Latest role</dt><dd>Yspace — Data Analyst / Business Analyst<span className="mono dim">Oct 2025 — Aug 2026</span></dd></div>
-            <div><dt>Team projects</dt><dd>Vec Att · Vecinn<span className="mono dim">PostgreSQL · Python · TypeScript</span></dd></div>
+            <div><dt>Team projects</dt><dd>VecAtt · VecInn<span className="mono dim">PostgreSQL · Python · TypeScript</span></dd></div>
           </dl>
         </aside>
       </section>
