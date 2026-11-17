@@ -310,7 +310,7 @@ export const projects: Project[] = [
   {
     slug: 'vec-att',
     index: '02',
-    title: 'Vec Att',
+    title: 'VecAtt',
     category: 'Attendance & Payroll SaaS',
     summary:
       'A multi-tenant attendance and payroll platform. I built per-shift timesheet data, the Lark Base payslip integration and the payroll data model on PostgreSQL.',
@@ -319,7 +319,7 @@ export const projects: Project[] = [
     status: 'In active development',
     period: 'Sep 2026 — Present',
     context: [
-      'Vec Att is a multi-tenant SaaS for shift-based attendance, timesheets, leave, approvals and payslips. A team of three builds it on TypeScript, Fastify and PostgreSQL 17.',
+      'VecAtt is a multi-tenant SaaS for shift-based attendance, timesheets, leave, approvals and payslips. A team of three builds it on TypeScript, Fastify and PostgreSQL 17.',
       'The platform separates tenant data with row-level security, runs background work on a PostgreSQL job queue and syncs datasets incrementally to Lark Base, Google Sheets and webhooks. My work turns raw attendance into per-shift timesheet data, moves that data to and from Lark Base, and models payroll.',
     ],
     problems: [
@@ -373,7 +373,7 @@ export const projects: Project[] = [
   {
     slug: 'vecinn',
     index: '03',
-    title: 'Vecinn',
+    title: 'VecInn',
     category: 'Property Management · Billing',
     summary:
       'A room-rental platform for landlords. I built the utility-billing logic, a PostgreSQL-coordinated job scheduler and idempotent payment reminders.',
@@ -382,7 +382,7 @@ export const projects: Project[] = [
     status: 'In active development',
     period: 'Jun 2026 — Present',
     context: [
-      'Vecinn helps landlords manage houses, rooms, tenants, contracts and monthly charges. A team of three built it on FastAPI, PostgreSQL 16, Redis, React and Docker Compose.',
+      'VecInn helps landlords manage houses, rooms, tenants, contracts and monthly charges. A team of three built it on FastAPI, PostgreSQL 16, Redis, React and Docker Compose.',
       'I owned the payments and operations side: turning meter readings into invoices, running daily jobs safely, and reminding landlords and tenants over Zalo.',
     ],
     problems: [
